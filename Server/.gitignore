@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+
+# Django related
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Migrations
+*/migrations/
+!*/migrations/__init__.py
+
+# Media & Static files (optional if using production storage)
+media/
+staticfiles/
+static/
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+# PyCharm
+.idea/
+
+# Environments
+.env
+*.env
+.env.*
+
+# coverage reports
+htmlcov/
+coverage.xml
+*.cover
+
+# Testing
+.test_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.cache
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Other IDEs
+*.swp
+*.swo
+
+# Docker (if used)
+*.pid
+docker-compose.override.yml
+
+# Node (if you're using React inside Django)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# System
+Thumbs.db
+ehthumbs.db
