@@ -30,11 +30,19 @@ class ProductSerializer(serializers.ModelSerializer):
         write_only=True
     )
     images = ProductImageSerializer(many=True, read_only=True)
+    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
         fields = [
             'id', 'name', 'description', 'price', 'stock',
-            'image', 'is_active', 'created_at',
+            'image', 'image_url', 'is_active', 'created_at',
             'category', 'category_id', 'images'
         ]
+
+    def get_image_url(self, obj):
+        request = self.context.get('request')
+        if obj.image and request:
+            return request.build_absolute_uri(obj.image.url)
+        return None
+
