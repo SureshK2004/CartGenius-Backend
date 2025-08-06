@@ -10,7 +10,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, help_text="Name of the category")
     description = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='categories/%Y/%m/%d/', 
+        upload_to='categories/', 
         null=True, 
         blank=True, 
         help_text="Optional category image"
@@ -57,7 +57,7 @@ class Product(models.Model):
         help_text="Available stock"
     )
     image = models.ImageField(
-        upload_to='products/%Y/%m/%d/',
+        upload_to='products/',
         null=True,
         blank=True,
         help_text="Optional main product image"
@@ -92,7 +92,7 @@ class ProductImage(models.Model):
         related_name='images',
         on_delete=models.CASCADE
     )
-    image = models.ImageField(upload_to='product_images/%Y/%m/%d/')
+    image = models.ImageField(upload_to='product_images/')
     is_featured = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
