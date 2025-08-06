@@ -82,7 +82,7 @@ class PasswordResetRequestSerializer(serializers.Serializer):
             request = self.context.get('request')
             site_domain = "luxcart.devxnet.cloud"  
             relative_link = f"/password-reset-confirm/{uidb64}/{token}/"
-            abslink = f"https://{site_domain}{relative_link}"
+            abslink = f"https://{site_domain}{relative_link}" 
             email_body = f"Hi {user.first_name},\n\nUse the link below to reset your password:\n{abslink}\n\nIf you didn't request this, just ignore this email."
             
             data = {
