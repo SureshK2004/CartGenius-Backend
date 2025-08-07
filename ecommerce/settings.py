@@ -162,9 +162,14 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-# Cloudinary Settings
+# Cloudinary Configuration
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': env('CLOUDINARY_API_KEY'),
-    'API_SECRET': env('CLOUDINARY_API_SECRET')
+    'API_SECRET': env('CLOUDINARY_API_SECRET'),
+    'SECURE': True,  # Always use HTTPS
+    'MEDIA_TAG': 'media',  # Optional: organize media files
+    'INVALIDATE': True,  # Optional: CDN cache invalidation
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'png', 'gif', 'webp'] 
 }
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
