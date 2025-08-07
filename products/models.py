@@ -3,18 +3,21 @@ from django.conf import settings
 from django.utils.text import slugify
 from django.utils.crypto import get_random_string
 from django.core.validators import MinValueValidator
+from cloudinary.models import CloudinaryField
+
 
 User = settings.AUTH_USER_MODEL
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, help_text="Name of the category")
     description = models.TextField(blank=True)
-    image = models.ImageField(
-        upload_to='categories/', 
-        null=True, 
-        blank=True, 
-        help_text="Optional category image"
-    )
+    # image = models.ImageField(
+    #     upload_to='categories/', 
+    #     null=True, 
+    #     blank=True, 
+    #     help_text="Optional category image"
+    # )
+    image = CloudinaryField('image', blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -56,12 +59,13 @@ class Product(models.Model):
         validators=[MinValueValidator(0)],
         help_text="Available stock"
     )
-    image = models.ImageField(
-        upload_to='products/',
-        null=True,
-        blank=True,
-        help_text="Optional main product image"
-    )
+    # image = models.ImageField(
+    #     upload_to='products/',
+    #     null=True,
+    #     blank=True,
+    #     help_text="Optional main product image"
+    # )
+    image = CloudinaryField('image', blank=True, null=True)
     is_active = models.BooleanField(default=True, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -92,7 +96,8 @@ class ProductImage(models.Model):
         related_name='images',
         on_delete=models.CASCADE
     )
-    image = models.ImageField(upload_to='product_images/')
+    # image = models.ImageField(upload_to='product_images/')
+    image = CloudinaryField('image')
     is_featured = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
