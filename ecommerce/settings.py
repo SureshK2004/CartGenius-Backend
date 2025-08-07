@@ -18,7 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ===== Core Settings =====
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1', 'luxcart.devxnet.cloud'])
+#ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1', 'luxcart.devxnet.cloud'])
+ALLOWED_HOSTS = ['*']
+
 
 # Application definition
 INSTALLED_APPS = [
