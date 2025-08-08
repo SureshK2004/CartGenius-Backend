@@ -8,7 +8,7 @@ def generateOtp():
     return otp
 
 def send_code_to_user(email):
-    subject = "One-Time Passcode for Email Verification"
+    subject = "CartGenius – Your One-Time Passcode for Email Verification"
     otp_code = generateOtp()
     print(f"Generated OTP for {email}: {otp_code}")
 
@@ -26,12 +26,16 @@ def send_code_to_user(email):
 
     current_site = "myAuth.com"
     email_body = f"""
-        <p>Hi <strong>{user.email}</strong>,</p>
-        <p>Thanks for signing up on <strong>{current_site}</strong>.</p>
-        <p>Please verify your email using this one-time passcode:</p>
-        <h2 style="color:#2d3748;">🔐 {otp_code}</h2>
-        <p>Have a nice day!</p>
-    """
+    <p>Hi <strong>{user.email}</strong>,</p>
+    <p>Welcome to <strong>CartGenius</strong>! Thank you for signing up.</p>
+    <p>Please use the One-Time Passcode (OTP) below to verify your email address:</p>
+    <h2 style="color:#2d3748; font-weight:bold; letter-spacing:2px;">🔐 {otp_code}</h2>
+    <p>This code is valid for <strong>15 minutes</strong>.</p>
+    <p>If you did not create an account with CartGenius, you can safely ignore this email.</p>
+    <p>Best regards,<br>
+    <strong>The CartGenius Team</strong></p>
+"""
+
 
     email = EmailMessage(
         subject=subject,
